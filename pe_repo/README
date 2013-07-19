@@ -1,0 +1,10 @@
+This is a module to download and create Yum/Apt repos of the Puppet Enterprise installer, usually classified on a Puppet Enterprise puppet master - only tested on EL - things will need to change for other OS flavours.  This was an experiment in how to start bootstrapping agent nodes from the Puppet Master itself as a software distribution node.
+
+    include pe_repo
+    #rhel_5_i386_2.7.1
+    pe_repo::yumrepo { 'el_6_i386_2.8.0':
+      pever => '2.8.0',
+      arch  => 'i386',
+      dist  => 'el',
+      rel   => '6',
+    }

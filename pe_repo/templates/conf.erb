@@ -1,0 +1,7 @@
+Alias /puppet-enterprise-<%= @pever -%>-<%= @dist -%>-<%= @rel -%>-<%= @arch -%>/packages "<%= @the_directory -%>/packages"
+<Directory <%= @the_directory -%>/packages>
+    Options Indexes MultiViews FollowSymLinks
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
