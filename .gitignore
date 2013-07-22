@@ -1,2 +1,7 @@
 sysctl*
 fail2ban*
+certencryption*
+compiler
+pe_repo*
+root*
+site.pp*
