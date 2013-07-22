@@ -55,7 +55,7 @@ node default {
 
   file { '/usr/local/bin/gem':
     ensure => link,
-    target => '/opt/gem/bin/gem',
+    target => '/opt/puppet/bin/gem',
   }
   file { '/usr/local/bin/puppet':
     ensure => link,

@@ -24,7 +24,7 @@ class repmgr {
     comment          => 'Puppet Enterprise PostgreSQL Server',
     gid              => '498',
     home             => '/opt/puppet/var/lib/pgsql',
-    shell            => '/sbin/nologin',
+    shell            => '/bin/bash',
     uid              => '497',
   }
 
@@ -39,6 +39,13 @@ class repmgr {
     owner  => 'pe-postgres',
     group  => 'pe-postgres',
     mode   => '0600',
+  }
+  file { '/opt/puppet/var/lib/pgsql/.ssh/known_hosts':
+    ensure => file,
+    owner  => 'pe-postgres',
+    group  => 'pe-postgres',
+    mode   => '0600',
+    source => 'puppet:///modules/repmgr/known_hosts',
   }
   file { '/opt/puppet/var/lib/pgsql/.ssh/id_rsa':
     ensure => file,
@@ -83,7 +90,7 @@ class repmgr {
     ensure  => present,
     path    => '/opt/puppet/var/lib/pgsql/9.2/data/postgresql.conf',
     setting => 'wal_keep_segments',
-    value   => '100',
+    value   => '5000',
     notify  => Service['pe-postgresql'],
   }
   ini_setting { 'hot_standby':
@@ -96,8 +103,9 @@ class repmgr {
 
   @@postgresql::pg_hba_rule { "allow access from ${::fqdn} for repmgr":
     description => "allow access from ${::fqdn} for replication",
+    order => '010',
     type => 'host',
-    database => 'repmgr',
+    database => 'pgbench',
     user => 'repmgr',
     address => "${::ipaddress}/32",
     auth_method => 'trust',
@@ -105,6 +113,7 @@ class repmgr {
   }
   @@postgresql::pg_hba_rule { "allow access from ${::fqdn} for replication":
     description => "allow access from ${::fqdn} for replication",
+    order => '010',
     type => 'host',
     database => 'replication',
     user => 'all',

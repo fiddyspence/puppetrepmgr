@@ -1,0 +1,26 @@
+{
+  "license": "Apache License, Version 2.0",
+  "types": [
+
+  ],
+  "version": "0.0.2",
+  "dependencies": [
+
+  ],
+  "summary": "Puppet library to do RSA SSL based en/decryption",
+  "source": "UNKNOWN",
+  "description": "Puppet library to do RSA SSL based en/decryption",
+  "author": "fiddyspence",
+  "project_page": "https://github.com/fiddyspence/puppet-certencryption",
+  "name": "fiddyspence-certencryption",
+  "checksums": {
+    "tests/init.pp": "bf1329ef755a363c7bb099b117140a46",
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "lib/puppet/parser/functions/decrypt.rb": "b86d15f37a009d829e61101a9d2ac440",
+    "lib/puppet/util/certencryption.rb": "123ea95092845e42df555875e4f5a95c",
+    "README.md": "05e871054939658a5c7e498a18081679",
+    "manifests/init.pp": "29eab29e2c6e8b1b07ad59bb591416f9",
+    "lib/facter/encfact.rb": "227c3107234b27cbc28b5478afe62648",
+    "Modulefile": "c918f29451c655f44177cf4706dc60ea"
+  }
+}
